@@ -1,87 +1,66 @@
-<!-- @format -->
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@5"
-      rel="stylesheet"
-      type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<head>
+  <meta charset="UTF-8">
+  <title>Job Application Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  </head>
 
-  <body class="">
-    <header class="w-11/12 p-10 space-y-4 mx-auto">
-      <h1 class="text-2xl font-bold text-[#002C5C]">Job Application Tracker</h1>
-      <div class="grid grid-cols-3 gap-5">
-        <div class="bg-base-200 rounded-md p-5">
-          <p>Total</p>
-          <p id="total">0</p>
-        </div>
-        <div class="bg-base-200 rounded-md p-5 first-line:">
-          <p>Interview</p>
-          <p id="interview">0</p>
-        </div>
-        <div class="bg-base-200 rounded-md p-5">
-          <p>Rejected</p>
-          <p id="rejected">0</p>
-        </div>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+
+  <header class="w-11/12 mx-auto py-8 space-y-6">
+
+    <h1 class="text-3xl font-bold text-[#002C5C]">
+      Job Application Tracker
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="bg-white rounded-xl p-6 shadow">
+        <p class="text-gray-500">Total Jobs</p>
+        <p id="total" class="text-3xl font-bold">0</p>
       </div>
-    </header>
-<main>
-    <section class="w-11/12 mx-auto">
-        <div class="flex justify-between bg-base-200 ">
-            <h2 class="font-bold text-[#002C5C]  py-5">Available Job</h2>
-            <p id="job-available" class="p-5">9</p>
-        </div>
-        <br>
-      <button onclick="toggleStyle('all-btn')" id="all-btn" class="btn">All</button>
-      <button onclick="toggleStyle('interview-btn')" id="interview-btn" class="btn">Interview</button>
-      <button onclick="toggleStyle('rejected-btn')" id="rejected-btn" class="btn">Rejected</button>
 
-      <br>
+      <div class="bg-white rounded-xl p-6 shadow">
+        <p class="text-gray-500">Interview</p>
+        <p id="interview" class="text-3xl font-bold text-green-600">0</p>
+      </div>
 
-      <section id="all-card">
-      <section id="jobs" class="">
-        <!-- main div -->
-        <div class="flex justify-between bg-base-200 p-6 ">
-          <!-- main left -->
-          <div class="space-y-5">
-            <div>
-              <h2>Mobile First Corp</h2>
-              <p>React Native Developer</p>
-            </div>
-            <p>Remote • Full-time • $130,000 - $175,000</p>
-            <div>
-                <button class="btn">Not Applied</button>
-                <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
-            </div>
-            <button class="btn">Interview</button>
-            <button class="btn">Rejected</button>
-          </div>
+      <div class="bg-white rounded-xl p-6 shadow">
+        <p class="text-gray-500">Rejected</p>
+        <p id="rejected" class="text-3xl font-bold text-red-600">0</p>
+      </div>
 
-          <!-- main right -->
-          <div>
-            <button id="delete-btn" class="btn">
-                <i class="fa-solid fa-trash-can"></i>
-            </button>
-          </div>
-        </div>
-        <br>
+    </div>
+  </header>
 
 
-      </section>
+  <main class="w-11/12 mx-auto pb-16">
 
-      <section class="jobs"></section>
+    <div class="flex justify-between bg-white p-6 rounded-xl shadow mb-6">
+      <h2 class="text-xl font-bold text-[#002C5C]">Available Jobs</h2>
+      <p  class="font-semibold"> <span id="tab-count">0</span> jobs</p> 
+    </div>
 
-        
-     
-</main>
-    <script src="script.js"></script>
-  </body>
+
+    <div class="flex gap-4 mb-6">
+      <button onclick="switchTab('all')" id="all-tab" class="btn btn-primary">All</button>
+      <button onclick="switchTab('interview')" id="interview-tab" class="btn">Interview</button>
+      <button onclick="switchTab('rejected')" id="rejected-tab" class="btn">Rejected</button>
+    </div>
+
+
+    <div id="jobs-container" class="grid grid-cols-1 md:grid-cols-1 gap-6"></div>
+
+  </main>
+
+
+
+<script src="script.js"></script>
+</body>
 </html>
